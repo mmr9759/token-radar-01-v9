@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch Radar — Token Launch Radar</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="mark">◉</div>
+    <div>
+      <h1>LAUNCH RADAR</h1>
+      <p class="sub">Token launch radar · radar-9: comps-calibrated value, tested blind</p>
+    </div>
+  </div>
+  <div class="chips" id="chips"></div>
+</header>
+
+<main>
+  <section class="panel" id="method">
+    <h2>How a value is priced</h2>
+    <p class="lede">Every protocol below <b>records no token</b> — never "has none"; the snapshot
+    cannot prove that. Its implied value is <b>TVL × a multiple</b>, where the multiple comes
+    from the 128 protocols whose token already trades: the median multiple of its own
+    category, shrunk toward the global median, plus a gentle size adjustment, plus small
+    capped growth and age terms. Nothing here is priced by name.</p>
+    <div class="tests" id="tests"></div>
+    <details>
+      <summary>Comps by category (median multiple, shrunk)</summary>
+      <table class="mini" id="cats"><thead><tr><th>Category</th><th>Comps</th><th>Multiple</th></tr></thead><tbody></tbody></table>
+    </details>
+  </section>
+
+  <section class="panel controls">
+    <input id="q" type="search" placeholder="Search a protocol…" aria-label="Search">
+    <select id="cat" aria-label="Category"><option value="">All categories</option></select>
+    <select id="sort" aria-label="Sort">
+      <option value="value">Sort: implied value</option>
+      <option value="tvl">Sort: TVL</option>
+      <option value="mult">Sort: multiple</option>
+      <option value="growth">Sort: 7d growth</option>
+    </select>
+    <label class="chk"><input type="checkbox" id="watch"> Watchlist only</label>
+  </section>
+
+  <section class="panel">
+    <table class="board" id="board">
+      <thead><tr>
+        <th>#</th><th>Protocol</th><th>Category</th><th class="num">TVL</th>
+        <th class="num">7d</th><th class="num">Multiple</th><th class="num">Implied value</th>
+        <th class="num">P10–P90</th><th class="num">Rank range</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+    <p class="count" id="count"></p>
+  </section>
+
+  <section class="panel" id="detail">
+    <h2 id="d-name">Pick a protocol</h2>
+    <p class="muted" id="d-sub">Click any row to see its value breakdown and farm plan.</p>
+    <div class="d-grid">
+      <div>
+        <h3>Why this multiple</h3>
+        <div id="d-break"></div>
+      </div>
+      <div>
+        <h3>Farm plan — what it costs, how long it takes</h3>
+        <ol id="d-steps"></ol>
+      </div>
+    </div>
+  </section>
+
+  <footer class="panel foot">
+    <p>Snapshot: DefiLlama protocols endpoint, fetched 2026-11-14 (see board data for the exact
+    source line). 198 pre-token protocols priced; the 40-protocol watchlist is the floor, never
+    the ceiling. Implied values are this entry's own claim, never make.fun's. Farm costs are
+    estimates from public gas levels at the snapshot date. This is research, not financial advice.</p>
+  </footer>
+</main>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
